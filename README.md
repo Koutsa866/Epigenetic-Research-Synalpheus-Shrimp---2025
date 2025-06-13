@@ -31,7 +31,7 @@ Using Oxford Nanopore sequencing, we identify heavily methylated DNA regions and
 - Annotated high-methylation sequences to infer gene function
 
 ### 4. **CpG Island Detection** *(In Progress)*
-- Using Python to scan genome for:
+- Using Python to scan the genome for:
   - ≥50% GC content
   - CpG Observed/Expected ratio ≥ 0.6
   - Length ≥ 200 bp
@@ -46,6 +46,18 @@ Using Oxford Nanopore sequencing, we identify heavily methylated DNA regions and
 - Some sequences had **>10%** mC, possibly within CpG islands
 
 ---
+
+## 🔭 Current Research
+
+Future work will expand this study in the following ways:
+	•	Genome-Wide CpG Mapping: Identify and annotate CpG islands across the Synalpheus chacei genome and integrate methylation data to locate regulatory hotspots.
+	•	Gene Association: Link highly methylated CpG islands to nearby genes, especially those related to reproduction, development, or behavior.
+	•	Comparative Epigenetics: Compare methylation patterns between eusocial and non-eusocial Synalpheus species to identify epigenetic signatures of eusociality.
+	•	Functional Insights: Analyze whether methylation may block transcription factor binding or regulate gene expression.
+	•	Improved Data Resolution: Use additional MinION runs, align reads to a reference genome, and refine filtering for high-confidence calls.
+
+---
+
 
 ## 🧩 Goals
 
