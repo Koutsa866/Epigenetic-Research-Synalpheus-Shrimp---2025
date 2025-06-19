@@ -6,35 +6,41 @@
 
 This project explores the role of epigenetics — specifically cytosine methylation at CpG sites — in the evolution of eusociality in *Synalpheus chacei*, a marine sponge-dwelling snapping shrimp. Eusociality in these shrimp evolved independently across species and is characterized by reproductive division of labor and cooperative brood care, similar to ants or bees.
 
-Using Oxford Nanopore sequencing, we identify heavily methylated DNA regions and test their overlap with CpG islands and nearby genes, with the hypothesis that epigenetic regulation may drive gene expression differences linked to eusocial behavior.
+Oxford Nanopore sequencing and computational analysis are used to:
+- Detect highly methylated DNA regions
+- Identify and annotate CpG islands
+- Investigate the proximity of these islands to functionally relevant genes
+
 
 ---
 
-## 🔬 Methods
+## 🔬 Methods Overview
 
-### 1. **Nanopore Sequencing & Basecalling**
-- Data from a single MinION run (25,728 reads)
-- Used **Dorado** to basecall DNA and extract methylation tags:
-  - **MM tags:** Mark modified cytosines
-  - **ML tags:** Indicate probability of modification
+### 1. 🧪 Nanopore Sequencing & Basecalling
+- Sequenced on Oxford Nanopore MinION (~25,700 reads)
+- Used **Dorado** for basecalling and to extract methylation-related tags:
+  - `MM`: modified base location
+  - `ML`: probability of modification
 
-### 2. **Methylation Analysis**
-- Filtered for cytosine bases with >95% probability of methylation
-- Computed proportion of methylated cytosines per sequence
-- Identified top 10 sequences with highest methylation levels
+### 2. 🧮 Methylation Processing
+- Script: `Shrimp_Proj2025.py`
+- Filters reads for high-confidence methylated cytosines (>95%)
+- Computes per-read methylation percentages
+- Extracts and outputs top 10 most-methylated sequences for BLAST analysis
 
-### 3. **BLAST Search for Sequence Annotation**
-- Ran BLASTn and BLASTx against:
-  - `nr`: non-redundant nucleotide
-  - `tsa_nr`: protein-translated transcriptome database
-  - `core_nt`: curated nucleotide dataset
-- Annotated high-methylation sequences to infer gene function
-
-### 4. **CpG Island Detection** *(In Progress)*
-- Using Python to scan the genome for:
-  - ≥50% GC content
-  - CpG Observed/Expected ratio ≥ 0.6
+### 3. 🔍 CpG Island Detection
+- Script: `map_methylation_to_cpg.py`
+- Custom Python script identifies CpG islands by:
+  - %GC ≥ 50%
+  - Obs/Exp CpG ratio ≥ 0.6
   - Length ≥ 200 bp
+- Output stored as BED format
+
+### 4. 🧬 Mapping CpG Islands to Methylation
+- Script: `run_methylation_mapping.sh`
+- Uses `bedtools map` to compute average methylation over CpG islands
+- Preparing for downstream analysis of gene proximity
+
 
 ---
 
@@ -59,27 +65,53 @@ Future work will expand this study in the following ways:
 ---
 
 
-## 🧩 Goals
+## 🧩 Progress Checklist
 
-- [x] Extract MM/ML tags from MinION BAM files
-- [x] Calculate methylation percentage per read
-- [x] Annotate top mC sequences via BLAST
-- [ ] Detect CpG islands
-- [ ] Identify genes near methylated CpG islands
-- [ ] Compare methylation patterns to social vs. non-social shrimp species
+- [x] Extracted MM/ML tags from MinION data
+- [x] Calculated per-read methylation
+- [x] BLASTed top methylated sequences
+- [x] Identified CpG islands
+- [x] Mapped methylation levels to CpG islands
+- [ ] Link CpG islands to nearby genes (in progress)
+- [ ] Functional annotation of associated genes
+- [ ] Compare eusocial vs. non-eusocial methylation patterns (planned)
+
+---
+
+## 🔭 Future Work
+
+- Map CpG islands to nearby genes using GFF annotations
+- Analyze enrichment of functional categories (e.g., behavior, reproduction)
+- Compare across *Synalpheus* species with differing social structures
+- Add visualizations of methylation across genome
+
+---
+
+## 📈 Tools & Software Used
+
+| Tool         | Purpose                          |
+|--------------|----------------------------------|
+| Dorado       | Basecalling + methylation calling |
+| Python       | CpG scanning, filtering, analysis |
+| R / Bash     | Data wrangling, visualization     |
+| bedtools     | Genomic region mapping            |
+| BLASTn/x     | Sequence annotation               |
+
 
 ---
 
 ## 📂 Folder Structure
 
 ```bash
-data/
-  ├── raw/               # BAM, FASTQ from MinION
-  └── processed/         # Trimmed methylation data
-scripts/
-  ├── basecalling/       # Dorado setup
-  ├── methylation/       # Analysis in R/Python
-  └── blast_annotation.R
-results/
-  ├── figures/
-  └── tables/
+2025_SnrProj_Synalpheus/
+├── Scripts/
+│   ├── Shrimp_Proj2025.py
+│   ├── map_methylation_to_cpg.py
+│   └── run_methylation_mapping.sh
+├── data/
+│   ├── raw/               # BAM, bedmethyl, readstats
+│   └── processed/         # filtered_methylation.tsv, CpG island BED
+├── results/
+│   ├── tables/            # top10 BLAST hits, CpG-methylation mapping
+│   └── figures/           # optional future visualizations
+├── README.md
