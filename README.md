@@ -41,7 +41,6 @@ Oxford Nanopore sequencing and computational analysis are used to:
 - Uses `bedtools map` to compute average methylation over CpG islands
 - Preparing for downstream analysis of gene proximity
 
-
 ---
 
 ## 📊 Results Summary
@@ -96,7 +95,6 @@ Future work will expand this study in the following ways:
 | R / Bash     | Data wrangling, visualization     |
 | bedtools     | Genomic region mapping            |
 | BLASTn/x     | Sequence annotation               |
-
 
 ---
 
