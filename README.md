@@ -73,14 +73,15 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ## 📊 Results Summary
 
-- **Median read length:** 2,561 bp (range: 5–38,026 bp)
-- **82%** of reads contained ≥1 high-confidence methylated cytosine
-- **Median methylation proportion:** 0.006
-- Some sequences had **>10%** mC, possibly within CpG islands
+- Median read length: 2,561 bp (range: 5–38,026 bp)
+- 82% of reads contained ≥1 high-confidence methylated cytosine
+- Median methylation proportion: 0.006
+- Some sequences had >10% mC, possibly within CpG islands
+- Top 10 methylated reads were annotated using BLAST and found to contain hits to genes with possible regulatory or functional roles
 - Total CpG islands identified genome-wide: 5,423,765
 - Methylated CpG islands (≥70% methylation threshold): 5,123,226
 - Proportion of methylated CpG islands: 94.46%
--These CpG island metrics were derived after integrating methylation call data with CpG island locations, supporting the hypothesis that widespread methylation may influence gene regulation in Synalpheus chacei.
+- These CpG island metrics were derived after integrating methylation call data with CpG island locations, supporting the hypothesis that widespread methylation may influence gene regulation in Synalpheus chacei.
 
 ---
 
