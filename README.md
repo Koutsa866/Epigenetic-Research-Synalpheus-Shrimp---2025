@@ -6,7 +6,7 @@
 
 This project investigates the epigenetic basis of eusociality in Synalpheus chacei, a sponge-dwelling snapping shrimp that exhibits complex social behaviors, including reproductive division of labor and cooperative brood care—traits that have independently evolved multiple times within this genus.
 
-Focusing on DNA methylation at CpG islands, we explore how epigenetic modifications may regulate gene expression patterns associated with eusocial traits. Using Oxford Nanopore sequencing, we identify heavily methylated regions across the genome and assess their overlap with CpG islands and nearby genes. We hypothesize that methylated CpG islands located near regulatory regions influence the expression of genes critical to social structure and division of labor. This work aims to uncover novel molecular mechanisms underlying social evolution in marine invertebrates and broaden our understanding of epigenetic regulation beyond traditional model organisms.
+Focusing on DNA methylation at CpG islands, we explore how epigenetic modifications may regulate gene expression patterns associated with eusocial traits. Using Oxford Nanopore sequencing data, we identify heavily methylated regions across the genome and assess their overlap with CpG islands and nearby genes. We hypothesize that methylated CpG islands located near regulatory regions influence the expression of genes critical to social structure and division of labor. This work aims to uncover novel molecular mechanisms underlying social evolution in marine invertebrates and broaden our understanding of epigenetic regulation beyond traditional model organisms.
 
 ---
 
