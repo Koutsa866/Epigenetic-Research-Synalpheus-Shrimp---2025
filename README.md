@@ -12,6 +12,8 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ## 🔬 Methods
 
+## 🔬 Workflow Overview
+
 ### 1. **Nanopore Sequencing and Methylation Tag Extraction**
 - Sequenced DNA with Oxford Nanopore MinION
 - Used **Dorado** for basecalling and extraction of:
@@ -19,7 +21,15 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
   - **ML tags** (probabilities of modification)
 - Filtered for methylation probabilities >95%
 
-  ### 2. **CpG Island Detection and Methylation Overlay**
+### 2. Methylation Quantification and BLAST Annotation (Summer 2024)
+	•	Calculated the proportion of methylated cytosines per read
+	•	Identified the top 10 reads with the highest proportion of methylation (up to ~10%)
+	•	These reads were hypothesized to overlap with CpG islands and regulatory regions
+	•	Annotated the top methylated sequences using BLASTn and BLASTx against:
+	•	nr, tsa_nr, and core_nt databases
+	•	Functions inferred from BLAST results were used to assess potential roles in eusocial traits
+
+### 3. **CpG Island Detection and Methylation Overlay**
 - Used Python to detect CpG islands based on:
   - GC content ≥ 50%
   - Obs/Exp CpG ratio ≥ 0.6
@@ -30,9 +40,9 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
   - % of island bases methylated
   - Methylation thresholds (e.g. >70%) to classify islands as methylated
 
-### 3.**Genome Chunking and Gene Prediction**
-- Split genome assembly into 28,000+ contigs
-- Organized into 56 batches of 500 files each (`contigs_batch_1` to `contigs_batch_56`)
+  ### 4. **Genome Chunking and Gene Prediction**
+- Split genome assembly into 2,800+ contigs
+- Organized into 56 batches of 50 files each (`contigs_batch_1` to `contigs_batch_56`)
 - Ran **AUGUSTUS** gene prediction (via bash in Google Colab) on all batches using:
   ```
   --species=fly
@@ -41,19 +51,19 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
   --print_utr=on
   --protein=on
   ```
-- Output: ~28,000 `.gff` files stored in batch-labeled folders in `augustus_output/`
+- Output: ~2,800 `.gff` files stored in batch-labeled folders in `augustus_output/`
 
-### 4. **Gene-CpG Island Association** *(Next Step)*
+### 5. **Gene-CpG Island Association** *(Next Step)*
 - Convert `.gff` predictions to `.bed` format
 - Use **BEDTools** to identify genes overlapping or near methylated CpG islands
 - Goal: Identify potential regulatory relationships
 
-### 5. **Gene Annotation and Functional Insights** *(Upcoming)*
+### 6. **Gene Annotation and Functional Insights** *(Upcoming)*
 - Annotate predicted genes using **eggNOG-mapper** or **InterProScan**
 - Perform **GO enrichment** to detect overrepresented functions
 - Visualize results with **IGV** or **UCSC Genome Browser**
 
-### 6. **Machine Learning Model (Exploratory)**
+### 7. **Machine Learning Model (Exploratory)**
 - Use **H2O AutoML** to predict gene methylation status from features:
   - CpG island features
   - Distance to gene TSS
