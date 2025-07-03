@@ -12,8 +12,6 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ## 🔬 Methods
 
-## 🔬 Workflow Overview
-
 ### 1. **Nanopore Sequencing and Methylation Tag Extraction**
 - Sequenced DNA with Oxford Nanopore MinION
 - Used **Dorado** for basecalling and extraction of:
