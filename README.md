@@ -19,7 +19,18 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
   - **ML tags** (probabilities of modification)
 - Filtered for methylation probabilities >95%
 
-### 2. **Genome Chunking and Gene Prediction**
+  ### 2. **CpG Island Detection and Methylation Overlay**
+- Used Python to detect CpG islands based on:
+  - GC content ≥ 50%
+  - Obs/Exp CpG ratio ≥ 0.6
+  - Length ≥ 200 bp
+- Mapped methylation tags to CpG islands
+- Calculated:
+  - % methylation per island
+  - % of island bases methylated
+  - Methylation thresholds (e.g. >70%) to classify islands as methylated
+
+### 3.**Genome Chunking and Gene Prediction**
 - Split genome assembly into 28,000+ contigs
 - Organized into 56 batches of 500 files each (`contigs_batch_1` to `contigs_batch_56`)
 - Ran **AUGUSTUS** gene prediction (via bash in Google Colab) on all batches using:
@@ -30,18 +41,7 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
   --print_utr=on
   --protein=on
   ```
-- Output: ~2,800 `.gff` files stored in batch-labeled folders in `augustus_output/`
-
-### 3. **CpG Island Detection and Methylation Overlay**
-- Used Python to detect CpG islands based on:
-  - GC content ≥ 50%
-  - Obs/Exp CpG ratio ≥ 0.6
-  - Length ≥ 200 bp
-- Mapped methylation tags to CpG islands
-- Calculated:
-  - % methylation per island
-  - % of island bases methylated
-  - Methylation thresholds (e.g. >70%) to classify islands as methylated
+- Output: ~28,000 `.gff` files stored in batch-labeled folders in `augustus_output/`
 
 ### 4. **Gene-CpG Island Association** *(Next Step)*
 - Convert `.gff` predictions to `.bed` format
