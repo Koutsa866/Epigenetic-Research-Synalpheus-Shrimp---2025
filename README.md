@@ -2,7 +2,7 @@
 > A senior research project by **Philip Koutsaftis**  
 > Advisor: Dr. Solomon Chak, Denison University
 
-## 🧠 Project Summary
+##  Project Summary
 
 This project investigates the epigenetic basis of eusociality in Synalpheus chacei, a sponge-dwelling snapping shrimp that exhibits complex social behaviors, including reproductive division of labor and cooperative brood care—traits that have independently evolved multiple times within this genus.
 
@@ -10,22 +10,25 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## 🔬 Methods
+## Methods (Section 1 - Summer 2024)
 
-### 1. **Nanopore Sequencing and Methylation Tag Extraction**
+### 1.Nanopore Sequencing and Methylation Tag Extraction**
 - Sequenced DNA with Oxford Nanopore MinION
 - Used **Dorado** for basecalling and extraction of:
-  - **MM tags** (modified cytosines)
-  - **ML tags** (probabilities of modification)
+  - **MM tags** (locations of modified cytosines)
+  - **ML tags** (corresponding probabilities of methylation)
 - Filtered for methylation probabilities >95%
 
 ### 2. Methylation Quantification and BLAST Annotation (Summer 2024)
-	•	Calculated the proportion of methylated cytosines per read
-	•	Identified the top 10 reads with the highest proportion of methylation (up to ~10%)
-	•	These reads were hypothesized to overlap with CpG islands and regulatory regions
-	•	Annotated the top methylated sequences using BLASTn and BLASTx against:
-	•	nr, tsa_nr, and core_nt databases
-	•	Functions inferred from BLAST results were used to assess potential roles in eusocial traits
+- Extracted MM and ML tags from basecalled Nanopore data to identify methylated cytosines
+- Used R to calculate the proportion of methylated cytosines per read and to summarize methylation distributions across all reads
+- Filtered for high-confidence methylation events by retaining only reads with ≥95% probability of methylation
+- Identified the top 10 reads with the highest methylation levels (up to ~10%)
+ Hypothesized that these highly methylated reads may overlap CpG islands or gene regulatory regions
+- Annotated these sequences using BLASTn and BLASTx against the nr, tsa_nr, and core_nt databases
+- Interpreted BLAST hits to evaluate possible gene functions and potential roles in eusocial traits
+
+## Methods  (Section 2 - Summer 2025 - Present)
 
 ### 3. **CpG Island Detection and Methylation Overlay**
 - Used Python to detect CpG islands based on:
@@ -69,7 +72,7 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## 📊 Results Summary
+##  Results Summary
 
 - Median read length: 2,561 bp (range: 5–38,026 bp)
 - 82% of reads contained ≥1 high-confidence methylated cytosine
@@ -83,7 +86,7 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## ✅ Completed Milestones
+##  Completed Milestones
 
 - [x] Nanopore methylation tag extraction
 - [x] Genome chunking into 2,800+ contigs
@@ -95,7 +98,7 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## 🔜 In Progress / Upcoming
+##  In Progress / Upcoming
 
 - [ ] Convert `.gff` to `.bed` for genes
 - [ ] Use BEDTools to find CpG–gene overlaps
@@ -106,7 +109,7 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## 🗂 Folder Structure
+##  Folder Structure
 
 ```
 /2025_SnrProj_Dir/
@@ -137,13 +140,13 @@ Focusing on DNA methylation at CpG islands, we explore how epigenetic modificati
 
 ---
 
-## 🧠 Research Significance
+##  Research Significance
 
 This is one of the first genome-wide studies of DNA methylation in a eusocial marine invertebrate. By integrating methylation data, CpG island detection, gene prediction, and functional annotation, this research sheds light on the epigenetic regulation of complex social behavior in a non-insect system.
 
 ---
 
-## 🧾 References
+##  References
 
 - Dorado basecaller: Oxford Nanopore Technologies
 - AUGUSTUS gene prediction: Stanke et al. (2004)
