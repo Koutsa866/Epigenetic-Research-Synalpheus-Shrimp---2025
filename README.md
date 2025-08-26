@@ -4,7 +4,7 @@
 
 --
 
-## 📘 Project Summary
+##  Project Summary
 
 This project investigates the role of DNA methylation—particularly at CpG islands—in regulating gene expression related to eusocial behavior in *Synalpheus chacei*, a sponge-dwelling snapping shrimp. Eusociality in this genus has independently evolved multiple times and features traits such as reproductive division of labor and cooperative brood care, making it a compelling model for epigenetic evolution.
 
